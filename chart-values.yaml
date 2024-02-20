@@ -1,0 +1,14 @@
+image:
+  repository: artifactory.dagility.com/docker/siji-workflow-test-frontend
+  tag: latest
+  pullPolicy: Always
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx-internal
+  hosts:
+  - host: ${project.prefix?lower_case}-${component.code}-${project.environment?lower_case}.${project.properties.domain}
+    paths:
+    - /
+serviceAccount:
+  create: false
